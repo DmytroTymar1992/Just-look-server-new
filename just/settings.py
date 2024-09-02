@@ -31,7 +31,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'just-look-production.up.railway.app', 'localhost']
 
-
+CSRF_TRUSTED_ORIGINS = ['https://just-look-production.up.railway.app']
 # Application definition
 
 INSTALLED_APPS = [
