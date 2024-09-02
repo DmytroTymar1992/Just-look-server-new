@@ -127,7 +127,7 @@ WSGI_APPLICATION = 'just.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgresql://postgres:ijSccefvSveERgqrKpkeivgxMrngEBlS@autorack.proxy.rlwy.net:32764/railway',
+        default='postgresql://postgres:HMyKQmvydNgJPhHftpkizCYqxBhLxtse@autorack.proxy.rlwy.net:12476/railway',
         conn_max_age=600,
         ssl_require=True
     )
