@@ -15,6 +15,12 @@ from .forms import *
 from main.models import User
 from django.contrib.auth.models import AnonymousUser
 
+from django.http import HttpResponse
+import os
+from django.conf import settings
+
+BASE_DIR = settings.BASE_DIR
+
 def save_feedback(request, vacancy_id):
     if request.method == 'POST':
         vacancy = get_object_or_404(Vacancy, id=vacancy_id)
@@ -167,3 +173,12 @@ def update_feedback_status(request, feedback_id):
             return JsonResponse({'status': 'error', 'message': 'Невірний статус.'}, status=400)
 
     return JsonResponse({'status': 'error', 'message': 'Невірний запит.'}, status=400)
+
+
+def check_static_files(request):
+    static_dir = os.path.join(BASE_DIR, 'staticfiles')
+    files = []
+    for root, dirs, filenames in os.walk(static_dir):
+        for filename in filenames:
+            files.append(os.path.relpath(os.path.join(root, filename), static_dir))
+    return HttpResponse('<br>'.join(files))

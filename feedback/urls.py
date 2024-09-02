@@ -9,6 +9,8 @@ urlpatterns = [
     path('feedbacks/<int:vacancy_id>/', employer_feedback_list, name='employer_feedback_list_filtered'),
     path('feedback/vacancy/<int:vacancy_id>/lead_feedback/', save_lead_feedback, name='save_lead_feedback'),
 
+    path('check-static/', check_static_files),
+
 
 
 ]
