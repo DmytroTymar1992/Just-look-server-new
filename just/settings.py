@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
 import logging.config
 from django.core.exceptions import ValidationError
 
@@ -109,17 +110,28 @@ WSGI_APPLICATION = 'just.wsgi.application'
 #    }
 #}
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'just',  # Назва вашої бази даних
-        'USER': 'just_admin',  # Ім'я користувача PostgreSQL
-        'PASSWORD': '1123456',  # Пароль користувача PostgreSQL
-        'HOST': 'localhost',  # Або інша адреса, де запущений PostgreSQL
-        'PORT': '5432',  # Порт за замовчуванням для PostgreSQL
-    }
-}
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql',
+#        'NAME': 'just',  # Назва вашої бази даних
+#        'USER': 'just_admin',  # Ім'я користувача PostgreSQL
+#        'PASSWORD': '1123456',  # Пароль користувача PostgreSQL
+#        'HOST': 'localhost',  # Або інша адреса, де запущений PostgreSQL
+#        'PORT': '5432',  # Порт за замовчуванням для PostgreSQL
+#    }
+#}
 
+
+
+
+
+DATABASES = {
+    'default': dj_database_url.config(
+        default='postgresql://postgres:ijSccefvSveERgqrKpkeivgxMrngEBlS@autorack.proxy.rlwy.net:32764/railway',
+        conn_max_age=600,
+        ssl_require=True
+    )
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
