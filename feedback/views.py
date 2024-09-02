@@ -182,3 +182,9 @@ def check_static_files(request):
         for filename in filenames:
             files.append(os.path.relpath(os.path.join(root, filename), static_dir))
     return HttpResponse('<br>'.join(files))
+
+
+def check_static_files(request):
+    static_dir = os.path.join(settings.BASE_DIR, 'staticfiles', 'main', 'css')
+    files = os.listdir(static_dir)
+    return HttpResponse('<br>'.join(files))
